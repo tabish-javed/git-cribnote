@@ -1,6 +1,6 @@
 # Working with local git repository
 
-## Initialize local git repository.
+## Initialize local git repository
 
 Turn a project/working directory into a git repository. This will create a (`.git`) a (hidden) sub-folder inside.
 the project folder
@@ -9,34 +9,31 @@ the project folder
 git init
 ```
 
-## Checking present git status.
+## Checking present git status
 
 Show current status of git repository.
 
 ```markdown
-git status
-
-> for example;
 $ git status
 On branch master
 nothing to commit, working tree clean
 $
 ```
 
-## Recording changes in project folder to staging area.
 
-Bring changes made in project folder to staging area before we actually create a commit in repository.
+## Recording changes in project folder to staging area
+
+We have to bring changes made in project folder to git's staging area 
+before those changes are added to the commit in repository.
 
 ```markdown
-> add an specific file to staging area;
 git add <filename>
-> add all changes made to project folder to staging area;
 git add .
 ```
 
 <img src="lifecycle.png"  width="400" height="200">
 
-## Create a commit in git repository.
+## Create a commit in git repository
 
 Commits in a repository are stages/milestones created/marked. Each commit has a unique ID.
 We always have to bring changes to staging area before we commit.
@@ -46,14 +43,13 @@ It is a good practice to use (`git add .`) before using following command.
 git commit -m (--message) "Message to associate with a commit"
 ```
 
-## Diving deeper into commits with git log.
+## Diving deeper into commits with git log
 
 Each commit in repository will create a log. We can inspect all commits in the branch using;
 
-```markdown
-git log
-
 > for example;
+
+```markdown
 $ git log
 commit cb34841215e6362df73fcaef5d2fabfee5f05526 (HEAD -> master)
 Author: TABISH <name@example.com>
@@ -69,11 +65,11 @@ Date: Fri Sep 9 23:13:13 2022 +0530
 
 : <Press Q here to exit>
 ```
+> To checkout any previous commit and to return back to project present state;
 
 ```markdown
-> to checkout any previous commit;
 git checkout <ID>
-> to return back to project present state;
+> return back to latest commit in the branch;
 git checkout branch <existing-branch-name>
 ```
 
@@ -91,6 +87,7 @@ git checkout <new-branch-name>
 > create a branch and shift to it;
 git checkout -b <new-branch-name>
 ```
+
 From git v2.23 onwards, we can also use `switch` option instead of checkout (the traditional way)
 
 ```markdown
@@ -110,7 +107,7 @@ git status
 git merge <feature-branch-name>
 ```
 
-## Understanding the HEAD and detached HEAD
+## Understanding the HEAD and detached HEAD states
 
 When we switch or checkout to a branch, HEAD shifts to latest commit in that branch.
 If we checkout to an specific commit HEAD gets detached and moves to the checked-out commit.
@@ -149,4 +146,39 @@ Switched to branch 'master'
 $ git status 
 On branch master
 nothing to commit, working tree clean
+```
+
+## Deleting file from project/git folder/repository
+
+We can delete file from project folder but that should also be deleted from git's staging area.
+Either we can update staging area using (`git add .`) after deleting file(s) from project folder.
+Or, we can use (`git rm <file-name>`) to remove file from staging area, before next commit.
+
+## Undoing Un-staged & Staged Changes
+
+Undoing/reverting a modified file(s) which is not added in staging area.
+
+```markdown
+> undo changes in a file;
+git checkout <file-name>
+> undo changes in more files/sub-directories (targeting the project folder);
+git checkout .
+> undo using explicitly specifying current branch;
+git checkout --
+```
+> From git v2.23 onwards we can also use (`restore`) option
+
+```markdown
+> undo changes in a file;
+git restore <file-name>
+> undo changes in project folder;
+git restore .
+```
+> Get rid of untracked file from project (File(s) which isn't ever added to staging area)
+
+```markdown
+> list untracked file(s) to be deleted;
+git clean -dn (-n or --dry-run)
+> confirm the delete/clean using force option;
+git clean -df (-f or --force)
 ```
