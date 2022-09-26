@@ -1,4 +1,4 @@
-# Working with local git repository
+# Working With Local Git Repository
 
 ## Initialize local git repository
 
@@ -156,7 +156,7 @@ Or, we can use (`git rm <file-name>`) to remove file from staging area, before n
 
 ## Undoing Un-staged & Staged Changes
 
-Undoing/reverting a modified file(s) which is not added in staging area.
+> Undoing/reverting a modified file(s) which is not added in staging area.
 
 ```markdown
 > undo changes in a file;
