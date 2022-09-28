@@ -1,6 +1,6 @@
 # Working With Local Git Repository
 
-## Initialize local git repository
+## Initialize Local Git Repository
 
 Turn a project/working directory into a git repository. This will create a (`.git`) a (hidden) sub-folder inside.
 the project folder
@@ -9,7 +9,7 @@ the project folder
 git init
 ```
 
-## Checking present git status
+## Checking Present Git Status
 
 Show current status of git repository.
 
@@ -21,7 +21,9 @@ $
 ```
 
 
-## Recording changes in project folder to staging area
+## Recording Changes In Project Folder To Staging Area
+\
+![Git's Lifecycle](./images/lifecycle.png)
 
 We have to bring changes made in project folder to git's staging area 
 before those changes are added to the commit in repository.
@@ -31,9 +33,7 @@ git add <filename>
 git add .
 ```
 
-<img src="./images/lifecycle.png" width="400" height="200" alt="Git's Lifecycle">
-
-## Create a commit in git repository
+## Create A Commit In Git Repository
 
 Commits in a repository are stages/milestones created/marked. Each commit has a unique ID.
 We always have to bring changes to staging area before we commit.
@@ -43,7 +43,7 @@ It is a good practice to use (`git add .`) before using following command.
 git commit -m (--message) "Message to associate with a commit"
 ```
 
-## Diving deeper into commits with git log
+## Diving Deeper Into Commits With Git Log
 
 Each commit in repository will create a log. We can inspect all commits in the branch using;
 
@@ -107,7 +107,7 @@ git status
 git merge <feature-branch-name>
 ```
 
-## Understanding the HEAD and detached HEAD states
+## Understanding The HEAD And Detached HEAD States
 
 When we switch or checkout to a branch, HEAD shifts to latest commit in that branch.
 If we checkout to an specific commit HEAD gets detached and moves to the checked-out commit.
@@ -148,13 +148,15 @@ On branch master
 nothing to commit, working tree clean
 ```
 
-## Deleting file from project/git folder/repository
+## Deleting File From project OR git-folder OR repository
 
 We can delete file from project folder but that should also be deleted from git's staging area.
 Either we can update staging area using (`git add .`) after deleting file(s) from project folder.
 Or, we can use (`git rm <file-name>`) to remove file from staging area, before next commit.
 
-## Undoing Un-staged & Staged Changes
+## Undoing Un-Staged & Staged Changes
+
+Here we explore steps involved in undoing/restoring back from un-staged/staged changes made to the repository.
 
 > Undoing/reverting a modified file(s) which is not added in staging area.
 
@@ -194,7 +196,9 @@ git restore --staged <file-name>
 > then;
 git checkout <file-name>
 ```
+
 ## Deleting Commits
+
 ```markdown
 > soft reset deletes last commit and keep changes in staging area
 git reset --soft HEAD~1
@@ -203,6 +207,7 @@ git reset --hard HEAD~1
 > **We can also use commit's hash instead of using HEAD position number**
 git reset HEAD <Commit ID>
 ```
+
 ## Deleting Branches
 
 ```markdown
@@ -211,7 +216,9 @@ git branch --delete <branch-name> (-d) We can specify more branches to be delete
 > to delete branch regardless the branch is merged or not;
 git branch --delete --force <branch-name> (-D)
 ```
+
 ## Committing Changes Made In Detached-Head State
+
 Any change we make in detached-head state, doesn't apply to the main branch. So, to bring these changes in the main branch we have to commit the change in detached-head state, copy the commit hash and create a new branch of it. Finally we can merge this new branch to the main branch.
 
 ```markdown
@@ -230,8 +237,9 @@ git branch merge <new-branch>
 > finally delete branch no longer needed
 git branch -D <new-branch>
 ```
+
 ## Understanding The .gitignore File
-.gitignore file contains file-names or wild-card entries for those file/directories, which are not required to be managed by git. This file can be placed in top of project folder <OR> in folder where .git directory exists.
+.gitignore file contains file-names or wild-card entries for those file/directories, which are not required to be managed by git. This file can be placed in top of project folder or in the folder where .git directory exists.
 
 ```markdown
 .gitignore---Example
@@ -241,4 +249,5 @@ git branch -D <new-branch>
 my-temporary-file   Specific file
 web-files/*         This will ignore web-files directory and all it's content
 ```
+
 # Diving Deeper Into Git
