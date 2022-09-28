@@ -174,7 +174,7 @@ git restore <file-name>
 > undo changes in project folder;
 git restore .
 ```
-> Get rid of untracked file from project (File(s) which isn't ever added to staging area)
+> Get rid of **untracked file(s)** from project folder which isn't ever added to staging area)
 
 ```markdown
 > list untracked file(s) to be deleted;
@@ -182,3 +182,5 @@ git clean -dn (-n or --dry-run)
 > confirm the delete/clean using force option;
 git clean -df (-f or --force)
 ```
+> Traditional way of **undoing staged** changes.\
+In other words, modification/files added to staging area and staging area is updated, for example; `git add .`
