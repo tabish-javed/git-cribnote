@@ -1,3 +1,4 @@
+[TOC]
 # Working With Local Git Repository
 
 ## Initialize Local Git Repository
@@ -241,13 +242,18 @@ git branch -D <new-branch>
 ## Understanding The .gitignore File
 .gitignore file contains file-names or wild-card entries for those file/directories, which are not required to be managed by git. This file can be placed in top of project folder or in the folder where .git directory exists.
 
-```markdown
-.gitignore---Example
-.venv               For python virtual environment
-*.log               Ignore all log files
-!test.log           This will not ignore test.log file
-my-temporary-file   Specific file
-web-files/*         This will ignore web-files directory and all it's content
-```
+.gitignore --- Example;
 
-# Diving Deeper Into Git
+|Entry Types          |Description
+|-|-|
+|.venv                |For python virtual environment
+|*.log                |Ignore all log files
+|!test.log            |This will not ignore test.log file (include in staging area)
+|my-temporary-file    |Ignore Specific file
+|web-files/*          |This will ignore web-files directory and all it's content
+
+
+# *Diving Deeper Into Git*
+
+To advance on Git's local repository, follow the link below:\
+[Git Advanced](./git-advance.md)
