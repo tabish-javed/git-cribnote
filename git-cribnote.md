@@ -1,4 +1,3 @@
-[TOC]
 # Working With Local Git Repository
 
 ## Initialize Local Git Repository
