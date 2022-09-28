@@ -31,7 +31,7 @@ git add <filename>
 git add .
 ```
 
-<img src="lifecycle.png"  width="400" height="200">
+<img src="./images/lifecycle.png" width="400" height="200" alt="Git's Lifecycle">
 
 ## Create a commit in git repository
 
@@ -184,3 +184,61 @@ git clean -df (-f or --force)
 ```
 > Traditional way of **undoing staged** changes.\
 In other words, modification/files added to staging area and staging area is updated, for example; `git add .`
+
+```markdown
+git reset <file-name>
+> then;
+git checkout <file-name>
+> after git 2.23 this is simplified using --staged flag;
+git restore --staged <file-name>
+> then;
+git checkout <file-name>
+```
+## Deleting Commits
+```markdown
+> soft reset deletes last commit and keep changes in staging area
+git reset --soft HEAD~1
+> to delete latest commit and updates in staging area;
+git reset --hard HEAD~1
+> **We can also use commit's hash instead of using HEAD position number**
+git reset HEAD <Commit ID>
+```
+## Deleting Branches
+
+```markdown
+> to delete a branch which is already merged;
+git branch --delete <branch-name> (-d) We can specify more branches to be deleted here in same line
+> to delete branch regardless the branch is merged or not;
+git branch --delete --force <branch-name> (-D)
+```
+## Committing Changes Made In Detached-Head State
+Any change we make in detached-head state, doesn't apply to the main branch. So, to bring these changes in the main branch we have to commit the change in detached-head state, copy the commit hash and create a new branch of it. Finally we can merge this new branch to the main branch.
+
+```markdown
+> get back to previous commit;
+git checkout <commit ID> (this will result a detached-head situation)
+> add changes to staging area;
+git add . <new-file>
+> create a commit with above changes;
+git commit -m "message"
+> shift HEAD back to original position;
+git switch <branch-name>
+*This result in situation loosing above commit*
+> to bring this left behind commit in the branch;
+git branch <new-branch> <commit ID>
+git branch merge <new-branch>
+> finally delete branch no longer needed
+git branch -D <new-branch>
+```
+## Understanding The .gitignore File
+.gitignore file contains file-names or wild-card entries for those file/directories, which are not required to be managed by git. This file can be placed in top of project folder <OR> in folder where .git directory exists.
+
+```markdown
+.gitignore---Example
+.venv               For python virtual environment
+*.log               Ignore all log files
+!test.log           This will not ignore test.log file
+my-temporary-file   Specific file
+web-files/*         This will ignore web-files directory and all it's content
+```
+# Diving Deeper Into Git
