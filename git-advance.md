@@ -161,56 +161,70 @@ Date:   Fri Sep 9 23:13:13 2022 +0530
 
     another commit
 ```
-> `git reflog` **_also helps us with deleted branch._** Let's create a new branch to check branch restore.
+> **`git reflog` _also helps us with deleted branch._** Let's create a new branch to check branch restore.
 
+> Create a "feature" branch and switch to it immediately
 ```markdown
-> create a "feature" branch and switch to it immediately
 tabish@ubuntu:~/Code/Git/basic $ git checkout -b feature
 Switched to a new branch 'feature'
 tabish@ubuntu:~/Code/Git/basic $
+```
 
-> list branches
+> List branches
+```markdown
 tabish@ubuntu:~/Code/Git/basic $ git branch 
 * feature
   master
 tabish@ubuntu:~/Code/Git/basic $
+```
 
-> add a new file to the project and commit it.
+> Add a new file to the project and commit it.
+```markdown
 tabish@ubuntu:~/Code/Git/basic $ git ls-files
 anotherfile
 testfile
+```
 
-> create a new file
+> Create a new file and add this to staging area
+```markdown
 tabish@ubuntu:~/Code/Git/basic $ touch feature-file
-
-> add this new file to staging area
 tabish@ubuntu:~/Code/Git/basic $ git add .
+```
 
-> check files in staging area
+> Check files in staging area
+```markdown
 tabish@ubuntu:~/Code/Git/basic $ git ls-files
 anotherfile
 feature-file
 testfile
+```
 
-> commit this change (in feature branch)
+> Commit this change (in feature branch)
+```markdown
 tabish@ubuntu:~/Code/Git/basic $ git commit -m "file added in feature"
 [feature 944d9f0] file added in feature
  1 file changed, 0 insertions(+), 0 deletions(-)
  create mode 100644 feature-file
 tabish@ubuntu:~/Code/Git/basic $
+```
 
-> switch back to master branch
+> Switch back to master branch
+```markdown
 tabish@ubuntu:~/Code/Git/basic $ git switch master 
 Switched to branch 'master'
+```
 
-> delete feature branch
+> Delete feature branch
+```markdown
 tabish@ubuntu:~/Code/Git/basic $ git branch -D feature 
 Deleted branch feature (was 944d9f0).
 tabish@ubuntu:~/Code/Git/basic $ git branch
 * master
 tabish@ubuntu:~/Code/Git/basic $
+```
 
-> check reflog
+> Check reflog
+```markdown
 tabish@ubuntu:~/Code/Git/basic $ git reflog 
 1711b0f (HEAD -> master) HEAD@{0}: checkout: moving from feature to master
 944d9f0 HEAD@{1}: commit: file added in feature
@@ -230,8 +244,10 @@ cb34841 HEAD@{14}: commit: third commit
 62caabb HEAD@{15}: commit: another commit
 3f8fa38 HEAD@{16}: commit (initial): initial commit
 tabish@ubuntu:~/Code/Git/basic $
+```
 
-> checkout to the commit ID of the feature branch, this will result in detached head state.
+> Checkout to the commit ID of the feature branch, this will result in detached head state.
+```markdown
 tabish@ubuntu:~/Code/Git/basic $ git checkout 944d9f0
 Note: switching to '944d9f0'.
 
@@ -251,13 +267,17 @@ Or undo this operation with:
 Turn off this advice by setting config variable advice.detachedHead to false
 
 HEAD is now at 944d9f0 file added in feature
+```
 
-> finally re-create feature branch having this commit.
+> Finally re-create feature branch having this commit.
+```markdown
 tabish@ubuntu:~/Code/Git/basic $ git switch -c feature
 Switched to a new branch 'feature'
 tabish@ubuntu:~/Code/Git/basic $
+```
 
-> list branches
+> List branches
+```markdown
 tabish@ubuntu:~/Code/Git/basic $ git branch 
 * feature
   master
