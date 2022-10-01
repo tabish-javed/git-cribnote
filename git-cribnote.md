@@ -23,7 +23,7 @@ $
 
 ## Recording Changes In Project Folder To Staging Area
 \
-![Git's Lifecycle](./images/lifecycle.png)
+![Git's Lifecycle](./images/lifecycle.png "Git Lifecycle")
 
 We have to bring changes made in project folder to git's staging area 
 before those changes are added to the commit in repository.
@@ -243,16 +243,13 @@ git branch -D <new-branch>
 
 .gitignore --- Example;
 
-|Entry Types          |Description
+|Entry Types    |Description
 |-|-|
-|.venv                |For python virtual environment
-|*.log                |Ignore all log files
-|!test.log            |This will not ignore test.log file (include in staging area)
-|my-temporary-file    |Ignore Specific file
-|web-files/*          |This will ignore web-files directory and all it's content
+|`.venv`        |For python virtual environment
+|`*.log`        |Ignore all log files
+|`!test.log`    |This will not ignore test.log file (include in staging area)
+|`my-file`      |Ignore Specific file
+|`web-files/*`  |This will ignore web-files directory and all it's content
 
-
-# *Diving Deeper Into Git*
-
-To advance on Git's local repository, follow the link below:\
+### _To advance on Git's local repository, follow;_
 [Git Advanced](./git-advance.md)
