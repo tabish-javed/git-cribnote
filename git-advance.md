@@ -112,3 +112,24 @@ Date:   Fri Sep 9 23:13:13 2022 +0530
     another commit
 $
 ```
+> **_Git keeps all record/changes in repository for last 30 days._**
+
+> Run `git reflog` to check all those changes.
+
+```markdown
+tabish@ubuntu:~/Code/Git/basic $ git reflog 
+cb34841 (HEAD -> master) HEAD@{0}: reset: moving to cb34841215e6362df73fcaef5d2fabfee5f05526
+**1711b0f** HEAD@{1}: commit: latest commit
+cb34841 (HEAD -> master) HEAD@{2}: reset: moving to HEAD
+cb34841 (HEAD -> master) HEAD@{3}: reset: moving to HEAD
+cb34841 (HEAD -> master) HEAD@{4}: reset: moving to HEAD
+cb34841 (HEAD -> master) HEAD@{5}: reset: moving to HEAD
+cb34841 (HEAD -> master) HEAD@{6}: reset: moving to HEAD
+cb34841 (HEAD -> master) HEAD@{7}: reset: moving to HEAD
+cb34841 (HEAD -> master) HEAD@{8}: checkout: moving from 62caabb1bf20f2864fcfdbd15d3c0b480ba4179c to master
+62caabb HEAD@{9}: checkout: moving from master to 62caabb1bf20f2864fcfdbd15d3c0b480ba4179c
+cb34841 (HEAD -> master) HEAD@{10}: commit: third commit
+62caabb HEAD@{11}: commit: another commit
+3f8fa38 HEAD@{12}: commit (initial): initial commit
+tabish@ubuntu:~/Code/Git/basic $
+```
