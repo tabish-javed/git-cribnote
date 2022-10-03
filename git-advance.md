@@ -119,7 +119,7 @@ $
 > Run `git reflog` to check all those changes.
 
 ```markdown
-tabish@ubuntu:~/Code/Git/basic $ git reflog 
+$ git reflog 
 cb34841 (HEAD -> master) HEAD@{0}: reset: moving to cb34841215e6362df73fcaef5d2fabfee5f05526
 > 1711b0f HEAD@{1}: commit: latest commit
 cb34841 (HEAD -> master) HEAD@{2}: reset: moving to HEAD
@@ -133,32 +133,32 @@ cb34841 (HEAD -> master) HEAD@{8}: checkout: moving from 62caabb1bf20f2864fcfdbd
 cb34841 (HEAD -> master) HEAD@{10}: commit: third commit
 62caabb HEAD@{11}: commit: another commit
 3f8fa38 HEAD@{12}: commit (initial): initial commit
-tabish@ubuntu:~/Code/Git/basic $
+$
 ```
 > Copy the lost commit's ID from the list and use as below;
 
 ```markdown
-tabish@ubuntu:~/Code/Git/basic $ git reset --hard 1711b0f
+$ git reset --hard 1711b0f
 HEAD is now at 1711b0f latest commit
 ```
 > Now we have the lost commit back in the project. Check using `git log`;
 
 ```markdown
-tabish@ubuntu:~/Code/Git/basic $ git log
+$ git log
 > commit 1711b0f9dbd240ccd359e8aaf4638c74331125c6 (HEAD -> master)
-Author: TABISH <tabishjaved@hotmail.com>
+Author: TABISH <email@example.com>
 Date:   Sat Oct 1 11:38:58 2022 +0530
 
     latest commit
 
 commit cb34841215e6362df73fcaef5d2fabfee5f05526
-Author: TABISH <tabishjaved@hotmail.com>
+Author: TABISH <email@example.com>
 Date:   Fri Sep 9 23:15:28 2022 +0530
 
     third commit
 
 commit 62caabb1bf20f2864fcfdbd15d3c0b480ba4179c
-Author: TABISH <tabishjaved@hotmail.com>
+Author: TABISH <email@example.com>
 Date:   Fri Sep 9 23:13:13 2022 +0530
 
     another commit
@@ -167,35 +167,35 @@ Date:   Fri Sep 9 23:13:13 2022 +0530
 
 > Create a "feature" branch and switch to it immediately
 ```markdown
-tabish@ubuntu:~/Code/Git/basic $ git checkout -b feature
+$ git checkout -b feature
 Switched to a new branch 'feature'
-tabish@ubuntu:~/Code/Git/basic $
+$
 ```
 
 > List branches
 ```markdown
-tabish@ubuntu:~/Code/Git/basic $ git branch 
+$ git branch 
 * feature
   master
-tabish@ubuntu:~/Code/Git/basic $
+$
 ```
 
 > Add a new file to the project and commit it.
 ```markdown
-tabish@ubuntu:~/Code/Git/basic $ git ls-files
+$ git ls-files
 anotherfile
 testfile
 ```
 
 > Create a new file and add this to staging area
 ```markdown
-tabish@ubuntu:~/Code/Git/basic $ touch feature-file
-tabish@ubuntu:~/Code/Git/basic $ git add .
+$ touch feature-file
+$ git add .
 ```
 
 > Check files in staging area
 ```markdown
-tabish@ubuntu:~/Code/Git/basic $ git ls-files
+$ git ls-files
 anotherfile
 feature-file
 testfile
@@ -203,31 +203,31 @@ testfile
 
 > Commit this change (in feature branch)
 ```markdown
-tabish@ubuntu:~/Code/Git/basic $ git commit -m "file added in feature"
+$ git commit -m "file added in feature"
 [feature 944d9f0] file added in feature
  1 file changed, 0 insertions(+), 0 deletions(-)
  create mode 100644 feature-file
-tabish@ubuntu:~/Code/Git/basic $
+$
 ```
 
 > Switch back to master branch
 ```markdown
-tabish@ubuntu:~/Code/Git/basic $ git switch master 
+$ git switch master 
 Switched to branch 'master'
 ```
 
 > Delete feature branch
 ```markdown
-tabish@ubuntu:~/Code/Git/basic $ git branch -D feature 
+$ git branch -D feature 
 Deleted branch feature (was 944d9f0).
-tabish@ubuntu:~/Code/Git/basic $ git branch
+$ git branch
 * master
-tabish@ubuntu:~/Code/Git/basic $
+$
 ```
 
 > Check reflog
 ```markdown
-tabish@ubuntu:~/Code/Git/basic $ git reflog 
+$ git reflog 
 1711b0f (HEAD -> master) HEAD@{0}: checkout: moving from feature to master
 944d9f0 HEAD@{1}: commit: file added in feature
 1711b0f (HEAD -> master) HEAD@{2}: checkout: moving from master to feature
@@ -245,12 +245,12 @@ cb34841 HEAD@{12}: checkout: moving from 62caabb1bf20f2864fcfdbd15d3c0b480ba4179
 cb34841 HEAD@{14}: commit: third commit
 62caabb HEAD@{15}: commit: another commit
 3f8fa38 HEAD@{16}: commit (initial): initial commit
-tabish@ubuntu:~/Code/Git/basic $
+$
 ```
 
 > Checkout to the commit ID of the feature branch, this will result in detached head state.
 ```markdown
-tabish@ubuntu:~/Code/Git/basic $ git checkout 944d9f0
+$ git checkout 944d9f0
 Note: switching to '944d9f0'.
 
 You are in 'detached HEAD' state. You can look around, make experimental
@@ -273,14 +273,14 @@ HEAD is now at 944d9f0 file added in feature
 
 > Finally re-create feature branch having this commit.
 ```markdown
-tabish@ubuntu:~/Code/Git/basic $ git switch -c feature
+$ git switch -c feature
 Switched to a new branch 'feature'
-tabish@ubuntu:~/Code/Git/basic $
+$
 ```
 
 > List branches
 ```markdown
-tabish@ubuntu:~/Code/Git/basic $ git branch 
+$ git branch 
 * feature
   master
 ```
