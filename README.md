@@ -1,4 +1,4 @@
-# git-cribnote
+# [Git's CribNote](/git-cribnote.md)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue)](https://opensource.org/licenses/MIT)
 

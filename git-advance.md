@@ -1,3 +1,5 @@
+[Learn git's basics](/git-cribnote.md)
+
 # Git Advanced Topics
 
 ## Understanding The Stash
