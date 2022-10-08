@@ -284,3 +284,80 @@ $ git branch
 * feature
   master
 ```
+## Combining Branches (Understanding Merge Types)
+
+There are scenarios, where we need evolved feature branch to original main/master branch, in that case we merge branches. Two key merge kinds are;
+
+### The Fast forward Merge
+
+The fast-forward merge only works when there is no additional commits in master/main branch since feature branch was created. Merge moves HEAD forward but doesn't create new commit.
+
+> Let's initialize a git repository and create first commit in master branch.
+
+```markdown
+> add a file in project
+tabish@ubuntu:~/Code/Git/basic $ touch master.txt
+> initialize git repository
+tabish@ubuntu:~/Code/Git/basic $ git init
+> add changes/files to git's staging area
+tabish@ubuntu:~/Code/Git/basic $ git add .
+> finally create a commit in master branch
+tabish@ubuntu:~/Code/Git/basic $ git commit -m "M1"
+[master (root-commit) 9c11a9f] M1
+ 1 file changed, 1 insertion(+)
+ create mode 100644 master.txt
+tabish@ubuntu:~/Code/Git/basic $
+```
+> Now we have a master branch with one commit in it, let's create a feature branch.
+
+```markdown
+> create a feature branch
+tabish@ubuntu:~/Code/Git/basic $ git switch -c feature
+Switched to a new branch 'feature'
+tabish@ubuntu:~/Code/Git/basic $
+> create a new update in feature branch
+tabish@ubuntu:~/Code/Git/basic $ touch feature.txt
+> add change to staging area
+tabish@ubuntu:~/Code/Git/basic $ git add .
+> create a commit in feature branch
+tabish@ubuntu:~/Code/Git/basic $ git commit -m "f1"
+[feature b708b72] f1
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 feature.txt
+tabish@ubuntu:~/Code/Git/basic $
+> check the log now, it shows commit in master and a commit in feature branch
+tabish@ubuntu:~/Code/Git/basic $ git log
+commit b708b7278f32bbf0f6e27cd1335140d4b6399b49 (HEAD -> feature)
+Author: TABISH <tabishjaved@hotmail.com>
+Date:   Sat Oct 8 17:43:37 2022 +0530
+
+    f1
+
+commit 9c11a9f113a7910cec569388c8e8015b2187f163 (master)
+Author: TABISH <tabishjaved@hotmail.com>
+Date:   Sat Oct 8 17:34:42 2022 +0530
+
+    M1
+tabish@ubuntu:~/Code/Git/basic $
+```
+> Finally implement the changes in feature branch to master branch
+
+```markdown
+> switch to master branch
+tabish@ubuntu:~/Code/Git/basic $ git switch master 
+Switched to branch 'master'
+tabish@ubuntu:~/Code/Git/basic $
+> merge with feature branch
+tabish@ubuntu:~/Code/Git/basic $ git merge feature 
+Updating 9c11a9f..b708b72
+Fast-forward <--[Git applied the Fast-Forward Merge]
+ feature.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 feature.txt
+tabish@ubuntu:~/Code/Git/basic $
+> updates in both branches are now merged
+tabish@ubuntu:~/Code/Git/basic $ git ls-files
+feature.txt
+master.txt
+tabish@ubuntu:~/Code/Git/basic $
+```
