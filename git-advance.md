@@ -361,3 +361,62 @@ feature.txt
 master.txt
 $
 ```
+> **_We can also use `--squash` flag while merging the branches (`git merge --squash <branch-name>`), this will bring all changes from feature branch to master branch instead of all commits of feature branch. Then we will just have to create a new commit in master branch as those updates from feature branch will be in staging area of master branch._**
+
+## The Recursive Merge (Non-Fast-Forward)
+
+In cases where master branch has also evolved (have additional commits since feature branch was created) then we use "recursive merge" applying `--no-ff` flag OR use simple merge, this will use "ort" strategy. Let's see this in action where master branch have additional commit.
+
+```markdown
+$ git status 
+On branch master
+nothing to commit, working tree clean
+$
+$ touch master2.txt
+$ git add .
+$ git commit -m "M2"
+[master 7d40948] M2
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 master2.txt
+$
+```
+> We have created additional commit in master branch. Merging these branches using `git merge <branch-name>` the default merge strategy will change to "ort".
+
+```markdown
+$ git merge feature 
+Merge made by the 'ort' strategy.
+ feature.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 feature.txt
+$
+```
+> To confirm this, check the log;
+
+```markdown
+$ git log
+commit a8d35b1819275b93900b6f25da544406553fa331 (HEAD -> master)
+Merge: 7d40948 b708b72
+Author: TABISH <email@example.com>
+Date:   Sat Oct 8 18:49:38 2022 +0530
+
+    Merging with Feature Branch
+
+commit 7d4094879a9602f9a627551393c6767a697ad543
+Author: TABISH <email@example.com>
+Date:   Sat Oct 8 18:44:55 2022 +0530
+
+    M2
+
+commit b708b7278f32bbf0f6e27cd1335140d4b6399b49 (feature)
+Author: TABISH <email@example.com>
+Date:   Sat Oct 8 17:43:37 2022 +0530
+
+    f1
+
+commit 9c11a9f113a7910cec569388c8e8015b2187f163
+Author: TABISH <email@example.com>
+Date:   Sat Oct 8 17:34:42 2022 +0530
+
+    M1
+$
+```
