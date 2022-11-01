@@ -25,7 +25,7 @@ $
 \
 ![Git's Lifecycle](./images/lifecycle.png "Git Lifecycle")
 
-We have to bring changes made in project folder to git's staging area 
+We have to bring changes made in project folder to git's staging area
 before those changes are added to the commit in repository.
 
 ```markdown
@@ -135,15 +135,15 @@ Turn off this advice by setting config variable advice.detachedHead to false
 
 HEAD is now at 62caabb another commit
 > verify detached head state;
-$ git branch 
+$ git branch
 * (HEAD detached at 62caabb)
   master
 > go back to initial state (move HEAD to the branch's latest commit);
-$ git checkout master 
+$ git checkout master
 Previous HEAD position was 62caabb another commit
 Switched to branch 'master'
 > verify git status again;
-$ git status 
+$ git status
 On branch master
 nothing to commit, working tree clean
 ```
@@ -238,7 +238,7 @@ git branch merge <new-branch>
 git branch -D <new-branch>
 ```
 
-## Understanding The .gitignore File
+## The .gitignore File
 .gitignore file contains file-names or wild-card entries for those file/directories, which are not required to be managed by git. This file can be placed in top of project folder or in the folder where .git directory exists.
 
 .gitignore --- Example;
